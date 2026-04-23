@@ -42,12 +42,12 @@ function afficherActivites() {
 
   // 🔴 BLOC PRINCIPAL (AVEC GRILLE)
   const blocPrincipal = creerContainer();
-  ajouterCarteDans(blocPrincipal, "FAQ prépa");
-  ajouterCarteDans(blocPrincipal, "Projets des prépas");
+  ajouterCarteDans(blocPrincipal, "Stand FAQ prépa");
+  ajouterCarteDans(blocPrincipal, "Stand des projets des prépas");
   activitesContainer.appendChild(blocPrincipal);
 
   // 🎯 TITRE SECONDAIRE
-  ajouterTitreSecondaire("🎯 On propose aussi sur place");
+  ajouterTitreSecondaire("🎯 On propose aussi dans le hall");
 
   // 🔵 BLOC SECONDAIRE (AVEC GRILLE)
   const blocSecondaire = creerContainer();
