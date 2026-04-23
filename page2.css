@@ -238,6 +238,16 @@ header {
     margin-top: 20px;
 }
 
+.activities-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
 .activite-card {
     padding: 20px;
     background: rgba(255, 255, 255, 0.7);

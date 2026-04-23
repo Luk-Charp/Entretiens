@@ -134,7 +134,7 @@ function ajouterTitreSecondaire(texte) {
 
 function creerContainer() {
   const div = document.createElement("div");
-  div.classList.add("infos-container");
+  div.classList.add("activities-container");
   return div;
 }
 
