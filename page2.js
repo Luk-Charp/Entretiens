@@ -54,6 +54,8 @@ function afficherActivites() {
   ajouterCarteDans(blocSecondaire, "Billard");
   ajouterCarteDans(blocSecondaire, "Club LAN (PS5 / Switch)");
   ajouterCarteDans(blocSecondaire, "Babyfoot");
+  ajouterCarteDans(blocSecondaire, "Unichess(échecs)");
+
   activitesContainer.appendChild(blocSecondaire);
 }
 
