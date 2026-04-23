@@ -32,52 +32,63 @@ fetch("data.json")
     }
   });
 
-const select = document.getElementById("domaine");
 const activitesContainer = document.getElementById("activites");
 
-select.addEventListener("change", () => {
-  const choix = select.value;
-
-  localStorage.setItem("domaine", choix);
-
-  // reset
-  activitesContainer.innerHTML = "";
-
+// Afficher les activités automatiquement au chargement
+function afficherActivites() {
   // 🔥 TITRE PRINCIPAL
   ajouterTitre("🔥 Voici ce qui pourrait t'intéresser");
+  ajouterSousTitre("voir plan en bas");
 
   // 🔴 BLOC PRINCIPAL (AVEC GRILLE)
   const blocPrincipal = creerContainer();
-
-  if (choix === "numerique") {
-    ajouterCarteDans(blocPrincipal, "Atelier GITI", true);
-  }
-
-  if (choix === "energie") {
-    ajouterCarteDans(blocPrincipal, "Atelier GETE", true);
-  }
-
-  if (choix === "les-deux") {
-    ajouterCarteDans(blocPrincipal, "Atelier GITI");
-    ajouterCarteDans(blocPrincipal, "Atelier GETE");
-  }
-
+  ajouterCarteDans(blocPrincipal, "FAQ prépa");
+  ajouterCarteDans(blocPrincipal, "Projets des prépas");
   activitesContainer.appendChild(blocPrincipal);
-
 
   // 🎯 TITRE SECONDAIRE
   ajouterTitreSecondaire("🎯 On propose aussi sur place");
 
   // 🔵 BLOC SECONDAIRE (AVEC GRILLE)
   const blocSecondaire = creerContainer();
-
   ajouterCarteDans(blocSecondaire, "Billard");
   ajouterCarteDans(blocSecondaire, "Club LAN (PS5 / Switch)");
   ajouterCarteDans(blocSecondaire, "Babyfoot");
-  ajouterCarteDans(blocSecondaire, "Unisique");
-
   activitesContainer.appendChild(blocSecondaire);
-});
+}
+
+// Appeler la fonction au chargement
+afficherActivites();
+
+// ===== MODAL SALLE =====
+function ouvrirModalSalle() {
+    document.getElementById("modalSalle").style.display = "block";
+}
+
+function fermerModalSalle() {
+    document.getElementById("modalSalle").style.display = "none";
+}
+
+// ===== MODAL PLAN =====
+function ouvrirModalPlan() {
+    document.getElementById("modalPlan").style.display = "block";
+}
+
+function fermerModalPlan() {
+    document.getElementById("modalPlan").style.display = "none";
+}
+
+// Fermer les modals au clic en dehors du contenu
+window.onclick = function(event) {
+    const modalSalle = document.getElementById("modalSalle");
+    const modalPlan = document.getElementById("modalPlan");
+    if (event.target == modalSalle) {
+        modalSalle.style.display = "none";
+    }
+    if (event.target == modalPlan) {
+        modalPlan.style.display = "none";
+    }
+}
 
 // fonction carte
 function afficherCarte(titre) {
@@ -97,6 +108,18 @@ function ajouterTitre(texte) {
   titre.style.color = "#ef3333";
 
   activitesContainer.appendChild(titre);
+}
+
+function ajouterSousTitre(texte) {
+  const sousTitre = document.createElement("p");
+  sousTitre.textContent = texte;
+  sousTitre.style.marginTop = "5px";
+  sousTitre.style.textAlign = "center";
+  sousTitre.style.color = "#999";
+  sousTitre.style.fontSize = "13px";
+  sousTitre.style.fontStyle = "italic";
+
+  activitesContainer.appendChild(sousTitre);
 }
 
 function ajouterTitreSecondaire(texte) {

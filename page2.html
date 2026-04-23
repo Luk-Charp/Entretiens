@@ -57,10 +57,11 @@
     <p id="jury">Chargement...</p>
 </div>
 
-<div class="infos-card">
+<div class="infos-card" onclick="ouvrirModalSalle()" style="cursor: pointer;">
     <i class="fa-solid fa-map-location"></i>
     <h2>Salle de passage</h2>
     <p id="salle">Chargement...</p>
+    <small style="color: #ef3333; font-style: italic;">clique pour voir le plan</small>
 </div>
 
 <div class="infos-card">
@@ -72,18 +73,28 @@
 
 
 
-<section class="choix-domaine">
-    <h2>Quel est le domaine qui t'intéresse ?</h2>
+<div id="activites"></div>
 
-    <select id="domaine">
-        <option value="">-- Choisissez une option --</option>
-        <option value="numerique">Numérique</option>
-        <option value="energie">Energie</option>
-        <option value="les-deux">Les deux</option>
-    </select>
+<!-- Image Ecole en bas -->
+<section class="section-photo-ecole">
+  <img src="images/plan1er.jpeg" alt="Ecole" class="photo-ecole" onclick="ouvrirModalPlan()" style="cursor: pointer;">
 </section>
 
-<div id="activites"></div>
+<!-- Modal Salle -->
+<div id="modalSalle" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fermerModalSalle()">&times;</span>
+    <img id="imageSalle" src="images/plan3e.jpeg" alt="Salle de passage">
+  </div>
+</div>
+
+<!-- Modal Plan -->
+<div id="modalPlan" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fermerModalPlan()">&times;</span>
+    <img id="imagePlan" src="images/plan1er.jpeg" alt="Plan">
+  </div>
+</div>
 
 </body>
 <script src="page2.js"></script>
