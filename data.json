@@ -1,11 +1,12 @@
 [
   {
-    "nom": "Dupont",
+    "nom": "Dûpont",
     "prenom": "Lucas",
     "heure": "10:30",
     "jury": "Jury 2",
     "salle": "B12",
-    "accompagnant": "Marie"
+    "accompagnant": "Marie",
+    "couleur": "#FF6B6B"
   },
   {
     "nom": "Martin",
@@ -13,6 +14,7 @@
     "heure": "11:00",
     "jury": "Jury 1",
     "salle": "A05",
-    "accompagnant": "Paul"
+    "accompagnant": "Paul",
+    "couleur": "#4ECDC4"
   }
 ]

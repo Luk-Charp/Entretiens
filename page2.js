@@ -26,7 +26,13 @@ fetch("data.json")
       document.getElementById("heure").textContent = user.heure;
       document.getElementById("jury").textContent = user.jury;
       document.getElementById("salle").textContent = user.salle;
-      document.getElementById("accompagnant").textContent = user.accompagnant;
+      
+      const accompagnantElement = document.getElementById("accompagnant");
+      accompagnantElement.textContent = user.accompagnant;
+      if (user.couleur) {
+        accompagnantElement.style.color = user.couleur;
+        accompagnantElement.style.fontWeight = "bold";
+      }
     } else {
       alert("Utilisateur non trouvé");
     }
