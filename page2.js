@@ -10,11 +10,18 @@ fetch("data.json")
       return;
     }
 
+    function normaliserTexte(texte) {
+  return texte
+    .toLowerCase()
+    .normalize("NFD") // sépare les accents
+    .replace(/[\u0300-\u036f]/g, ""); // supprime les accents
+}
+
     // 🔍 chercher dans le JSON avec les bonnes clésAHIVODJI
     const user = data.find(e =>
-      e.NOMS.toLowerCase() === nom.toLowerCase() &&
-      e.PRENOMS.toLowerCase() === prenom.toLowerCase()
-    );
+  normaliserTexte(e.NOMS) === normaliserTexte(nom) &&
+  normaliserTexte(e.PRENOMS) === normaliserTexte(prenom)
+  );
 
     if (user) {
         
