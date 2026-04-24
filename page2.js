@@ -80,9 +80,12 @@ function afficherActivites() {
   // 🔵 BLOC SECONDAIRE (AVEC GRILLE)
   const blocSecondaire = creerContainer();
   ajouterCarteDans(blocSecondaire, "Billard");
-  ajouterCarteDans(blocSecondaire, "Club LAN (PS5 / Switch)");
   ajouterCarteDans(blocSecondaire, "Babyfoot");
+  ajouterCarteDans(blocSecondaire, "Club LAN (PS5 / Switch)");
   ajouterCarteDans(blocSecondaire, "Jeux d'échecs");
+  ajouterCarteDans(blocSecondaire, "Infos Résidence");
+  ajouterCarteDans(blocSecondaire, "Atelier VR");
+  ajouterCarteDans(blocSecondaire, "Cafet'");
 
   activitesContainer.appendChild(blocSecondaire);
 }
