@@ -1,21 +1,57 @@
 // ===== PAGE 1 =====
-function valider() {
-    const nom = document.getElementById("nom").value.trim();
-    const prenom = document.getElementById("prenom").value.trim();
 
-    if (!nom || !prenom) {
-        alert("Veuillez remplir tous les champs");
-        return;
-    }
-
-    // Stockage temporaire
-    localStorage.setItem("nom", nom);
-    localStorage.setItem("prenom", prenom);
-
-    // Redirection
-    window.location.href = "page2.html";
+function normaliserTexte(texte) {
+  return texte
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 }
 
+function valider() {
+  const nom = document.getElementById("nom").value.trim();
+  const prenom = document.getElementById("prenom").value.trim();
+
+  if (!nom || !prenom) {
+    afficherErreur("Veuillez remplir tous les champs");
+    return;
+  }
+
+  fetch("data.json")
+    .then(res => res.json())
+    .then(data => {
+      const user = data.find(e =>
+        normaliserTexte(e.NOMS) === normaliserTexte(nom) &&
+        normaliserTexte(e.PRENOMS) === normaliserTexte(prenom)
+      );
+
+      if (user) {
+        localStorage.setItem("nom", nom);
+        localStorage.setItem("prenom", prenom);
+        window.location.href = "page2.html";
+      } else {
+        afficherErreur("Nom ou prénom incorrect ❌");
+      }
+    });
+
+    const erreur = document.getElementById("erreur");
+    if (erreur) erreur.remove();
+}
+
+function afficherErreur(message) {
+  let erreur = document.getElementById("erreur");
+
+  if (!erreur) {
+    erreur = document.createElement("p");
+    erreur.id = "erreur";
+    erreur.style.color = "#ef3333";
+    erreur.style.marginTop = "10px";
+    erreur.style.fontWeight = "bold";
+
+    document.querySelector(".form-container").appendChild(erreur);
+  }
+
+  erreur.textContent = message;
+}
 
 // ===== PAGE 2 =====
 function chargerParcours() {
