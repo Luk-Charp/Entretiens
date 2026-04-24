@@ -24,25 +24,26 @@ function chargerParcours() {
 
     if (!nom || !prenom) return;
 
-    document.getElementById("welcome").textContent =
+    document.getElementById("bonjour").textContent =
         "Bienvenue " + prenom + " " + nom;
 
-    // Simulation base de données (temporaire)
+    // Récupérer les données du JSON
     fetch("data.json")
         .then(res => res.json())
         .then(data => {
             const etudiant = data.find(e =>
-                e.nom.toLowerCase() === nom.toLowerCase() &&
-                e.prenom.toLowerCase() === prenom.toLowerCase()
+                e.NOMS.toLowerCase() === nom.toLowerCase() &&
+                e.PRENOMS.toLowerCase() === prenom.toLowerCase()
             );
 
             if (etudiant) {
-                document.getElementById("heure").textContent = etudiant.heure;
-                document.getElementById("salle").textContent = etudiant.salle;
-                document.getElementById("responsable").textContent = etudiant.responsable;
+                document.getElementById("heure").textContent = etudiant["HEURE DE PASSAGE"];
+                document.getElementById("jury").textContent = etudiant["n° JURY"];
+                document.getElementById("salle").textContent = etudiant["n° SALLES"];
+                document.getElementById("accompagnant").textContent = etudiant["ACCOMPAGNANTS"];
             } else {
-                document.getElementById("infos").innerHTML =
-                    "<p>Aucune information trouvée</p>";
+                document.querySelector(".infos-container").innerHTML =
+                    "<p style='text-align: center; padding: 20px;'>Aucune information trouvée</p>";
             }
         });
 }

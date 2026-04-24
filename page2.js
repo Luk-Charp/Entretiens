@@ -10,27 +10,27 @@ fetch("data.json")
       return;
     }
 
-    // 🔍 chercher dans le JSON
+    // 🔍 chercher dans le JSON avec les bonnes clés
     const user = data.find(e =>
-      e.nom.toLowerCase() === nom.toLowerCase() &&
-      e.prenom.toLowerCase() === prenom.toLowerCase()
+      e.NOMS.toLowerCase() === nom.toLowerCase() &&
+      e.PRENOMS.toLowerCase() === prenom.toLowerCase()
     );
 
     if (user) {
         
 
     document.getElementById("bonjour").textContent =
-    "Bonjour " + user.prenom ;
+    "Bienvenue " + user.PRENOMS ;
 
 
-      document.getElementById("heure").textContent = user.heure;
-      document.getElementById("jury").textContent = user.jury;
-      document.getElementById("salle").textContent = user.salle;
+      document.getElementById("heure").textContent = user["HEURE DE PASSAGE"];
+      document.getElementById("jury").textContent = user["n° JURY"];
+      document.getElementById("salle").textContent = user["n° SALLES"];
       
       const accompagnantElement = document.getElementById("accompagnant");
-      accompagnantElement.textContent = user.accompagnant;
-      if (user.couleur) {
-        accompagnantElement.style.color = user.couleur;
+      accompagnantElement.textContent = user["ACCOMPAGNANTS"];
+      if (user.HEXA) {
+        accompagnantElement.style.color = user.HEXA;
         accompagnantElement.style.fontWeight = "bold";
       }
     } else {
