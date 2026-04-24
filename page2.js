@@ -10,7 +10,7 @@ fetch("data.json")
       return;
     }
 
-    // 🔍 chercher dans le JSON avec les bonnes clés
+    // 🔍 chercher dans le JSON avec les bonnes clésAHIVODJI
     const user = data.find(e =>
       e.NOMS.toLowerCase() === nom.toLowerCase() &&
       e.PRENOMS.toLowerCase() === prenom.toLowerCase()
@@ -29,9 +29,24 @@ fetch("data.json")
       
       const accompagnantElement = document.getElementById("accompagnant");
       accompagnantElement.textContent = user["ACCOMPAGNANTS"];
+      
+      // Ajouter le sous-titre
+      const sousTitreElement = document.createElement("small");
+      sousTitreElement.textContent = "Cherche les étudiants avec une étiquette de cette couleur";
+      sousTitreElement.style.fontStyle = "italic";
+      sousTitreElement.style.display = "block";
+      sousTitreElement.style.marginTop = "8px";
+      accompagnantElement.parentElement.appendChild(sousTitreElement);
+      
       if (user.HEXA) {
+        // Appliquer la couleur HEXA au texte des accompagnants
         accompagnantElement.style.color = user.HEXA;
         accompagnantElement.style.fontWeight = "bold";
+        
+        // Appliquer la couleur HEXA au sous-titre
+        sousTitreElement.style.color = user.HEXA;
+        
+       
       }
     } else {
       alert("Utilisateur non trouvé");
@@ -60,7 +75,7 @@ function afficherActivites() {
   ajouterCarteDans(blocSecondaire, "Billard");
   ajouterCarteDans(blocSecondaire, "Club LAN (PS5 / Switch)");
   ajouterCarteDans(blocSecondaire, "Babyfoot");
-  ajouterCarteDans(blocSecondaire, "Unichess (échecs)");
+  ajouterCarteDans(blocSecondaire, "Jeux d'échecs");
 
   activitesContainer.appendChild(blocSecondaire);
 }
